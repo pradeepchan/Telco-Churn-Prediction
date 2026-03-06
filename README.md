@@ -129,10 +129,7 @@ Main dependencies:
 
 - pandas  
 - numpy  
-- scikit-learn  
-- matplotlib  
-- seaborn  
-- jupyter  
+- scikit-learn
 
 ---
 
