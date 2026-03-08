@@ -224,26 +224,80 @@ These features help explain why certain customer profiles are more likely to chu
 
 # 🧪 Example Prediction
 
-Example customer input:
+#### Example 1
+Customer input:
 
 ```json
 {
-  "tenure": 3,
+  "gender": "Female",
+  "SeniorCitizen": 0,
+  "Partner": "Yes",
+  "Dependents": "Yes",
+  "tenure": 1,
+  "PhoneService": "Yes",
+  "MultipleLines": "Yes",
   "InternetService": "Fiber optic",
+  "OnlineSecurity": "Yes",
+  "OnlineBackup": "No",
+  "DeviceProtection": "Yes",
+  "TechSupport": "No",
+  "StreamingTV": "Yes",
+  "StreamingMovies": "Yes",
   "Contract": "Month-to-month",
-  "MonthlyCharges": 94.85,
-  "PaymentMethod": "Electronic check"
+  "PaperlessBilling": "Yes",
+  "PaymentMethod": "Electronic check",
+  "MonthlyCharges": 102.45,
+  "TotalCharges": 102.45
 }
 ```
 
 Prediction output:
 
 ```
-Predicted Churn: Yes
-Probability: 0.823
+True Churn: 1 (1=Yes, 0=No)
+Predicted Churn: 1 (1=Yes, 0=No)
+Predicted Probability of Churn (Yes): 0.857
 ```
 
-The model identifies this profile as high risk due to short tenure, high charges, and a month-to-month contract.
+This customer shows several strong churn risk indicators, including very short tenure (1 month), a month-to-month contract, fiber optic service with high monthly charges ($102.45) and payment through electronic check. Based on these factors, the model predicted Churn = 1 (Yes) with a high probability of 0.857 (85.7%). The actual outcome confirms the prediction, making this a True Positive, where the model correctly identified a high-risk customer.
+
+
+#### Example 2
+Customer input:
+
+```json
+{
+  "gender": "Male",
+  "SeniorCitizen": 0,
+  "Partner": "No",
+  "Dependents": "No",
+  "tenure": 8,
+  "PhoneService": "No",
+  "MultipleLines": "No phone service",
+  "InternetService": "DSL",
+  "OnlineSecurity": "Yes",
+  "OnlineBackup": "No",
+  "DeviceProtection": "No",
+  "TechSupport": "No",
+  "StreamingTV": "No",
+  "StreamingMovies": "No",
+  "Contract": "Month-to-month",
+  "PaperlessBilling": "No",
+  "PaymentMethod": "Mailed check",
+  "MonthlyCharges": 29.35,
+  "TotalCharges": 216.45
+}
+```
+
+Prediction output:
+
+```
+True Churn: 0 (1=Yes, 0=No)
+Predicted Churn: 0 (1=Yes, 0=No)
+Predicted Probability of Churn (Yes): 0.234
+```
+
+This customer shows several indicators of lower churn risk, including DSL internet service, relatively low monthly charges ($29.35) and payment through mailed check, which typically reflect a lower cost service plan. The model predicted Churn = 0 (No) with a low churn probability of 0.234 (23.4%), and the actual outcome confirms the customer did not churn. This represents a True Negative prediction, where the model correctly identified a low-risk customer.
 
 ---
 
